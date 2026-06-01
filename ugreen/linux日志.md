@@ -1,36 +1,42 @@
+# linux日志
+
 一、Linux日志体系概览
 
-  ------------------- ----------------------------------------------- ------------------------------------------------- -------------------------------------
-  日志类别            文件路径（Ubuntu示例）                          主要记录内容                                      典型应用场景
+---
 
-  认证日志            /var/log/auth.log                                                                                 
+日志类别            文件路径（Ubuntu示例）                          主要记录内容                                      典型应用场景
 
-  CentOS:             SSH登录、sudo、su、用户创建/密码修改、PAM认证   检测爆破、异常登录、提权行为                      
-  /var/log/secure                                                                                                       
+‍
 
-  系统日志            /var/log/syslog                                                                                   
+认证日志            /var/log/auth.log
 
-  CentOS:             系统服务启动/错误、守护进程、网络服务、cron等   NAS排障首选，查看整体运行状态                     
-  /var/log/messages                                                                                                     
+CentOS:             SSH登录、sudo、su、用户创建/密码修改、PAM认证   检测爆破、异常登录、提权行为
+/var/log/secure
 
-  内核日志            dmesg -T 或 /var/log/kern.log                   驱动、磁盘、RAID、网卡、USB、内核异常             磁盘I/O错误、RAID降级、SATA链路问题
+系统日志            /var/log/syslog
 
-  启动日志            /var/log/boot.log                               开机过程、服务启动、驱动加载                      启动慢、服务无法启动
+CentOS:             系统服务启动/错误、守护进程、网络服务、cron等   NAS排障首选，查看整体运行状态
+/var/log/messages
 
-  定时任务日志        grep CRON /var/log/syslog                                                                         
+内核日志            dmesg -T 或 /var/log/kern.log                   驱动、磁盘、RAID、网卡、USB、内核异常             磁盘I/O错误、RAID降级、SATA链路问题
 
-  CentOS:             cron任务执行记录                                排查备份、rsync、快照脚本                         
-  /var/log/cron                                                                                                         
+启动日志            /var/log/boot.log                               开机过程、服务启动、驱动加载                      启动慢、服务无法启动
 
-  Samba日志           /var/log/samba/log.smbd 等                      SMB用户认证、共享访问、文件操作、权限错误         解决访问拒绝、共享异常
+定时任务日志        grep CRON /var/log/syslog
 
-  NFS日志             journalctl -u nfs-server 或 grep nfs            挂载、权限、连接异常                              处理 mount denied、stale file handle
-                      /var/log/syslog                                                                                   
+CentOS:             cron任务执行记录                                排查备份、rsync、快照脚本
+/var/log/cron
 
-  统一日志            journalctl                                      systemd管理的所有日志，可过滤服务、启动、内核等   现代Linux首选，替代部分传统文本日志
+Samba日志           /var/log/samba/log.smbd 等                      SMB用户认证、共享访问、文件操作、权限错误         解决访问拒绝、共享异常
 
-  审计日志            /var/log/audit/audit.log                        文件访问、命令执行、权限变更、用户行为            安全审计、合规要求
-  ------------------- ----------------------------------------------- ------------------------------------------------- -------------------------------------
+NFS日志             journalctl -u nfs-server 或 grep nfs            挂载、权限、连接异常                              处理 mount denied、stale file handle
+/var/log/syslog
+
+统一日志            journalctl                                      systemd管理的所有日志，可过滤服务、启动、内核等   现代Linux首选，替代部分传统文本日志
+
+审计日志            /var/log/audit/audit.log                        文件访问、命令执行、权限变更、用户行为            安全审计、合规要求
+
+---
 
 二、NAS工程师排查优先级（从高到低）
 

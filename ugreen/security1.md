@@ -1,23 +1,27 @@
+# security1
+
 一、Windows 关键事件 ID
 
-  ----------------------- ----------------------- --------------------------------
-  事件ID                  含义                    关注点
+---
 
-  4624                    登录成功                Account Name、Source Network
-                                                  Address、Logon
-                                                  Type（2本地/3网络/7解锁/10
-                                                  RDP/11缓存）
+事件ID                  含义                    关注点
 
-  4625                    登录失败                大量出现 → 暴力破解或密码攻击
+4624                    登录成功                Account Name、Source Network
+Address、Logon
+Type（2本地/3网络/7解锁/10
+RDP/11缓存）
 
-  4720                    创建用户                攻击者可能新建账户
+4625                    登录失败                大量出现 → 暴力破解或密码攻击
 
-  4732                    添加组成员              重点监控加入
-                                                  Administrators、Remote Desktop
-                                                  Users
+4720                    创建用户                攻击者可能新建账户
 
-  4672                    特殊权限分配            管理员登录成功（常跟在4624后）
-  ----------------------- ----------------------- --------------------------------
+4732                    添加组成员              重点监控加入
+Administrators、Remote Desktop
+Users
+
+4672                    特殊权限分配            管理员登录成功（常跟在4624后）
+
+---
 
 二、Linux 关键日志（/var/log/auth.log）
 
@@ -64,4 +68,6 @@ tcp.port==3389 RDP
 
 tcp.port==22 SSH
 
-tcp.flags.syn==1 && tcp.flags.ack==0 端口扫描（SYN）
+tcp.flags.syn==1 &amp;&amp; tcp.flags.ack==0 端口扫描（SYN）
+
+‍
