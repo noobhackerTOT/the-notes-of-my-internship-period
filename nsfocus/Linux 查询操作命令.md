@@ -1,0 +1,210 @@
+Linux 查询操作命令
+
+ls 查询目录下的文件 pwd 显示当前目录 find查找指定目录下的文件
+
+\*通配符代表所有字符
+
+Ids intrusion detection system
+
+入侵检测系统
+
+Ips intrusion prevention system
+
+入侵防护系统
+
+Pki
+
+Ca certifcate athourity
+
+Ra register athourity
+
+任何有关规则的配置都是由精确到广泛 最小权限+默认拒绝
+
+Tail 查看文件的内容
+
+Mkdir 创建文件夹
+
+Df 查看磁盘情况
+
+Mv 移动 cp 复制 rm删除
+
+Vi filename :wq 保存并退出 esc退出模式 a在行首添加 i在行末添加
+
+Iptables linux firewall 四表五链nat表地址转化 fliter 过滤表 iptable -t
+command against the rules cretiria 匹配准则 action
+
+Tcpdump (wireshark linux version)
+
+-i 指定接口
+
+-v 详细显示 -n 显示网络地址而不主机名字
+
+-w 将其写入指定文件
+
+物理层 数据链路层 网络层 传输层 会话层 表示层 应用层
+
+MAC地址表震荡的根本原因几乎总是网络中存在环路，且生成树协议（STP，Spanning
+Tree Protocol）未能正常工作（被关闭、配置错误或收敛速度慢）。
+
+STP spanning tree protocol的主要作用：
+
+消除环路：通过阻断冗余链路来消除网络中可能存在的环路。
+
+链路备份：当活动路径发生故障时，激活备份链路，及时恢复网络连通性。
+
+第一步：选举"根桥"
+
+STP首先会在网络中选举出一台交换机作为整个拓扑的"树根"（根桥）。
+
+依据：比较桥ID（优先级 +
+MAC地址）。优先级数值最小的成为根桥；如果优先级相同，MAC地址最小的当选。
+
+作用：根桥是整个网络的逻辑中心，所有路径的计算都以它为参考点。就像一棵树的树干，所有流量最终都要流向它或从它分发。
+
+第二步：选举"根端口"
+
+在所有非根桥的交换机上，每个交换机都会选出唯一的一个根端口（RP，Root
+Port）。
+
+定义：离根桥"最近"的端口（即到达根桥路径开销最小的端口）。
+
+作用：根端口是这台交换机去往根桥的出口。它处于转发状态。
+
+第三步：选举"指定端口"
+
+在每一条网段（两台交换机之间的连线）上，都会选举出一个指定端口（DP，Designated
+Port）。
+
+定义：在该网段上，离根桥最近的端口（即发送最优BPDU的端口）。
+
+作用：指定端口负责转发该网段的数据。根桥上的所有端口通常都是指定端口。
+
+第四步：阻塞"备用端口" ------ 消除回路的关键
+
+这是STP消除回路的关键动作。
+
+一台交换机上，既不是"根端口"，也不是"指定端口"的端口，将被设置为阻塞端口（Alternate/Backup
+Port）。
+
+状态：该端口在逻辑上被"阻塞"。
+
+不能发送数据帧。
+
+不能接收用户数据（除了STP的BPDU报文）。
+
+结果：物理上的冗余链路（环路）在逻辑上被切断了。网络变成了一棵没有环路的树形结构。
+
+安全设备的两种部署方式
+
+Bgp 协议 boarder gateway protocol 是针对自治系统 as的网关协议
+
+Ebgp 是针对不同as自治系统的网关协议
+
+Ibgp 是针对相同as自治系统的网关协议
+
+依靠tcp建立对话 由较高的稳定性
+
+针对cicso路由器
+
+  --------------------- ---------------------------------------- ------------------ -----------------
+                                                                                    
+
+  属性                  作用                                     传递范围           选路权重
+
+  AS_PATH               记录经过的 AS 序列，用于防环和选路       eBGP               路径越短越优
+                                                                 传递时追加自己的   
+                                                                 ASN                
+
+  Next_Hop              指示到达目标网络的下一跳 IP 地址         eBGP               \-
+                                                                 之间会改变，iBGP   
+                                                                 内不变             
+
+  Local_Pref            本地 AS 内选择出站路由，值越大越优先     只在 iBGP          高优先
+                                                                 邻居间传递         
+
+  MED                   向相邻 AS 通告进入本 AS                  传递给 eBGP 邻居   低优先
+                        的优选路径，值越小越优                                      
+
+  Origin                路由来源（IGP、EGP、Incomplete）         \-                 影响选路
+
+  Community             用于标记路由，实现策略分组               可跨 AS 传递       \-
+
+  Weight（Cisco私有）   本地路由器级别的选路权重，值越大越优先   不传递             最高优先
+  --------------------- ---------------------------------------- ------------------ -----------------
+
+当 BGP 收到多条到达同一目标的路由时，按以下顺序决策（以 Cisco IOS
+为例）：
+
+最高 Weight（本地有效）
+
+最高 Local_Pref（AS 内有效）
+
+本地起源（本地通过 network 命令注入的路由优于从其他 BGP 学来的）
+
+最短 AS_PATH
+
+最低 Origin 类型（IGP \< EGP \< Incomplete）
+
+最低 MED（仅当来自同一个 AS 时比较）
+
+eBGP 优于 iBGP（即从外部学来的优于从内部学来的）
+
+最低 IGP 开销到 Next_Hop
+
+最老的路由（稳定优先）
+
+最低 Router ID
+
+tips：
+
+对于接收方来说
+
+origin 类型是针对当前包的来源且它的权重要高于决定当前包的去向
+
+对于origin 内部的包的处理优先级要高于外部包的优先级
+
+对于发送方来说
+
+对于多条路由 从ebgp学习到的路由的优先级要高于从ibgp学习到的路由的优先级
+
+五、BGP 会话建立与维护
+
+1\. 邻居建立（以 eBGP 为例）
+
+管理员配置邻居 IP 和 AS 号。
+
+发起 TCP 连接（目的端口 179）。
+
+双方交换 OPEN 报文，协商 Hold Time、BGP 版本、Router ID、AS 号等。
+
+若参数一致，建立连接，进入 Established 状态。
+
+2\. 路由交换
+
+连接建立后，双方通过 UPDATE 报文交换路由信息（NLRI + 路径属性）。
+
+后续通过 KEEPALIVE（默认 60 秒）维持连接。
+
+路由变化时，发送 UPDATE 或 WITHDRAW 报文。
+
+VRRP (Virtual Router Redundancy
+Protocol，虚拟路由器冗余协议)。它通过将多台物理路由器组合成一个虚拟路由器，为局域网内的终端设备提供一个高可用的默认网关，有效解决了单点故障问题。
+
+Vrrp 路由器运行vrrp协议的路由器
+
+虚拟路由器：由一个master设备和多个backup设备
+视作一个共享局域网的主机的缺省网关
+
+Master承担报文的转发任务 当master路由器down 掉的时候backup
+路由器会在用户实行一个透明的切换
+
+Priority 设备的优先级决定master
+
+Vrid 虚拟路由器的标识 运行同一个vrrp协议的服务器拥有相同的vrid标识
+
+Master设备状态的通告（VRRP备份组状态维持）：
+
+Master设备周期性地发送VRRP通告报文，在VRRP备份组中公布其配置信息（优先级等）和工作状况。Backup设备通过接收到的VRRP报文来判断Master设备是否工作正常。
+当Master设备主动放弃Master地位（如Master设备退出备份组）时，会发送优先级为0的通告报文，用来使Backup设备快速切换成Master设备，而不用等到Master_Down_Interval定时器超时。这个切换的时间称为Skew_Time，计算方式为：（256－Backup设备的优先级）/256，单位为秒。
+
+当Master设备发生网络故障而不能发送通告报文的时候，Backup设备并不能立即知道其工作状况。等到Master_Down_Interval定时器超时后，才会认为Master设备无法正常工作，从而将状态切换为Master。其中，Master_Down_Interval定时器取值为：3×Advertisement_Interval＋Skew_Time，单位为秒。
