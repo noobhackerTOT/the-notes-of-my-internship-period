@@ -1,9 +1,5 @@
 # linux日志
 
-# linux日志
-
-# linux日志
-
 一、Linux日志体系概览
 
 ---

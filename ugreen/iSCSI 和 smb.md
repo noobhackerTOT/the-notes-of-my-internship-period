@@ -1,9 +1,5 @@
 # iSCSI 和 smb
 
-# iSCSI 和 smb
-
-# iSCSI 和 smb
-
 iSCSI 的全称是 Internet Small Computer System
 Interface（互联网小型计算机系统接口）。
 

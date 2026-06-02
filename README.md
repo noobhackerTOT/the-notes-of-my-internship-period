@@ -1,14 +1,12 @@
 # README
 
-# README
-
-# README
-
 # the-notes-of-my-internship-period
 
 本人是一名信息安全专业的毕业生，本项目旨在分享本人实习阶段学习、整理和记录的技术笔记。
 
 ‍
+
+  
 
 内容主要涉及：
 
