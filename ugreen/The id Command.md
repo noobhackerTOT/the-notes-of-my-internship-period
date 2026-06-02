@@ -1,5 +1,9 @@
 # The id Command
 
+# The id Command
+
+# The id Command
+
 The id Command
 
 When you run the command id in your terminal, it acts like a digital ID
@@ -26,7 +30,7 @@ database for all associated IDs and group memberships.
 Display: It prints that summary to your terminal so you can verify your
 status.
 
-**Home directory（主目录）**  和 **working**​**directory（工作目录）**  是操作系统中两个不同用途的目录概念：
+**Home directory（主目录）**    和 **working**​**directory（工作目录）**    是操作系统中两个不同用途的目录概念：
 
 ---
 

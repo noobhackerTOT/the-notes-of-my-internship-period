@@ -1,5 +1,9 @@
 # Samba 如何工作
 
+# Samba 如何工作
+
+# Samba 如何工作
+
 Samba 如何工作？
 
 Samba 依赖两个核心守护进程来协同工作：
