@@ -10,29 +10,29 @@
 
 **解答**：
 
-- ​`paramiko` 是同步阻塞库：每个 SSH 连接会占用一个系统线程（或 Python 线程），当需要同时处理数百个连接时，线程数量膨胀 → 内存开销大（每个线程约 8MB 栈内存）、上下文切换频繁、GIL 争用严重。
-- ​`asyncio.to_thread`​ 虽然可以将阻塞操作转移到线程池，但仍然受限于线程池大小（通常 CPU 核心数 × 5），且每个请求都要跨越事件循环和线程之间的边界，带来序列化/同步开销。更重要的是，`paramiko` 内部有自己的 socket 循环，丢进线程池后，无法与 asyncio 的其他组件（如 WebSocket、HTTP 蜜罐）共享同一个事件循环，导致整体架构割裂。
-- ​`asyncssh`​ 是原生 asyncio 实现：整个协议栈（TCP、握手、认证、通道）都用 `async/await` 编写，可以和其他 asyncio 服务无缝合并在同一个线程的事件循环中运行，单进程轻松支撑数千并发连接，且代码风格一致。
+- `paramiko` 是同步阻塞库：每个 SSH 连接会占用一个系统线程（或 Python 线程），当需要同时处理数百个连接时，线程数量膨胀 → 内存开销大（每个线程约 8MB 栈内存）、上下文切换频繁、GIL 争用严重。
+- `asyncio.to_thread`​ 虽然可以将阻塞操作转移到线程池，但仍然受限于线程池大小（通常 CPU 核心数 × 5），且每个请求都要跨越事件循环和线程之间的边界，带来序列化/同步开销。更重要的是，`paramiko` 内部有自己的 socket 循环，丢进线程池后，无法与 asyncio 的其他组件（如 WebSocket、HTTP 蜜罐）共享同一个事件循环，导致整体架构割裂。
+- `asyncssh`​ 是原生 asyncio 实现：整个协议栈（TCP、握手、认证、通道）都用 `async/await` 编写，可以和其他 asyncio 服务无缝合并在同一个线程的事件循环中运行，单进程轻松支撑数千并发连接，且代码风格一致。
 
 ### 2. `validate_password`​ 返回 False，但异步上报。如果 `_report` 异常，握手会失败吗？
 
 **解答**：
 
-- ​`asyncio.create_task`​ 会启动一个独立的协程任务，默认不会等待它的结果。如果 `_report`​ 内部抛出异常，该异常不会传播到 `validate_password` 中，因此不会中断 SSH 握手。
+- `asyncio.create_task`​ 会启动一个独立的协程任务，默认不会等待它的结果。如果 `_report`​ 内部抛出异常，该异常不会传播到 `validate_password` 中，因此不会中断 SSH 握手。
 - 但未捕获的异常会被事件循环捕获并记录到日志（可能触发 `Task exception was never retrieved`​ 警告）。正确做法是在 `_report`​ 内部用 `try/except` 包裹所有上报逻辑，至少记录错误日志，确保不上报行为不影响蜜罐的可用性。
 
 ### 3. Docker 中 `%TEMP%/threathive_ssh_host_key` 指向哪里？如何保证重启不丢失？
 
 **解答**：
 
-- ​`%TEMP%`​ 是 Windows 环境变量，在 Linux 容器中无意义。代码中应该用 `tempfile.gettempdir()`​ 或直接使用 `./data/ssh_host_key` 这样的相对路径。如果使用临时目录，容器重启后数据会丢失。
+- `%TEMP%`​ 是 Windows 环境变量，在 Linux 容器中无意义。代码中应该用 `tempfile.gettempdir()`​ 或直接使用 `./data/ssh_host_key` 这样的相对路径。如果使用临时目录，容器重启后数据会丢失。
 - 为了保证密钥持久化，应通过 Docker 卷（volume）将宿主机目录挂载到容器内的固定路径，例如：`-v ./data:/app/data`​，并在代码中写入 `/app/data/ssh_host_key`。
 
 ### 4. `asyncssh.create_server` 如何利用事件循环避免阻塞？
 
 **解答**：
 
-- ​`asyncssh`​ 内部使用 asyncio 的 `start_server`​ 创建 TCP 服务，并为每个连接创建一个 `SSHConnection` 协程对象。所有套接字 I/O 都注册到事件循环的文件描述符监视器中，当数据到达时事件循环回调对应的协程继续执行。
+- `asyncssh`​ 内部使用 asyncio 的 `start_server`​ 创建 TCP 服务，并为每个连接创建一个 `SSHConnection` 协程对象。所有套接字 I/O 都注册到事件循环的文件描述符监视器中，当数据到达时事件循环回调对应的协程继续执行。
 - SSH 协议的状态机（解密、加密、消息分帧）都是非阻塞的，每个协程在 `await` 读写数据时主动让出 CPU，事件循环可以处理其他连接。因此，数百个连接同时存在时，只有一个线程交替执行各个协程，没有线程上下文切换开销。
 
 ---
@@ -129,7 +129,7 @@
       writer.close()
       await writer.wait_closed()
   ```
-- ​`server.close()`​ 后调用 `wait_closed()`​ 是为了等待所有底层传输完全关闭并释放端口。如果缺少 `wait_closed`，重新启动服务器时可能遇到“地址已占用”错误。
+- `server.close()`​ 后调用 `wait_closed()`​ 是为了等待所有底层传输完全关闭并释放端口。如果缺少 `wait_closed`，重新启动服务器时可能遇到“地址已占用”错误。
 
 ---
 
@@ -139,7 +139,7 @@
 
 **解答**：
 
-- ​`aiosqlite` 底层是同步 sqlite3 + 线程池 + asyncio 队列，每个写操作都会串行化。每秒 1000 条事件（约 10ms 一条）通常可以承受，但遇到复杂查询时可能排队。写入锁竞争天然存在，因为 SQLite 只支持单写事务。优化方案：批量写入（每 50 条或 0.5 秒一次 flush），或换用 PostgreSQL/asyncpg。
+- `aiosqlite` 底层是同步 sqlite3 + 线程池 + asyncio 队列，每个写操作都会串行化。每秒 1000 条事件（约 10ms 一条）通常可以承受，但遇到复杂查询时可能排队。写入锁竞争天然存在，因为 SQLite 只支持单写事务。优化方案：批量写入（每 50 条或 0.5 秒一次 flush），或换用 PostgreSQL/asyncpg。
 
 ### 17. Redis Pub/Sub 消息堆积问题
 
@@ -183,7 +183,7 @@
 
 **解答**：
 
-- ​`validate_password`​ 被调用时，生成 `action="login_attempt"`​。`exec_requested`​ 被调用时，生成 `action="cmd:ls"`。
+- `validate_password`​ 被调用时，生成 `action="login_attempt"`​。`exec_requested`​ 被调用时，生成 `action="cmd:ls"`。
 - 因为蜜罐从不接受认证，所以永远不会出现“登录成功”事件，所有命令执行请求也会被拒绝。但攻击者可能在同一个 TCP 连接中不断尝试不同密码，每次都会产生 `login_attempt`​ 事件。文档中“不成功认证”就是通过始终返回 `False` 实现的。
 
 ---
@@ -244,7 +244,7 @@
 
 **解答**：
 
-- ​`pyproject.toml`​ 中 `dependencies`​ 字段必须声明所有运行时依赖（如 `asyncssh>=2.13`​、`aiohttp>=3.8`​ 等）。执行 `pip install -e .`​ 时会自动安装这些依赖。如果用户只克隆代码而没有安装，手动运行 Python 文件会报 `ModuleNotFoundError`。
+- `pyproject.toml`​ 中 `dependencies`​ 字段必须声明所有运行时依赖（如 `asyncssh>=2.13`​、`aiohttp>=3.8`​ 等）。执行 `pip install -e .`​ 时会自动安装这些依赖。如果用户只克隆代码而没有安装，手动运行 Python 文件会报 `ModuleNotFoundError`。
 
 ### 30. `demo_data.py` 会写入真实蜜罐吗？如何不影响统计？
 

@@ -11,7 +11,7 @@
 ## 应用指南
 
 |##|标题|分类|描述|链接|
-| ---| ----| ---------------------------------------------------------------------------------------------------------------------------------------| -----------------------------------------------------------------------| ----|
+| -----| ------| -----------------------------------------------------------------------------------------------------------------------------------------| -------------------------------------------------------------------------| ------|
 |116|**APP Center**|应用中心 > 应用中心|在UGOS Pro系统中，“应用中心”提供了广泛的软件...|[→](https://support.ugnas.com/#/detail/eyJjb2RlIjogIjImJjExNiIsICJjbGllbnRUeXBlIjogIiJ9)|
 |376|**Cloud Drives**|云盘 > 云盘|“云盘”是由...提供的跨平台文件管理应用程序|[→](https://support.ugnas.com/#/detail/eyJjb2RlIjogIjImJjM3NiIsICJjbGllbnRUeXBlIjogIiJ9)|
 |861|**How to Mount an Amazon S3 Bucket?**|云盘 > 如何挂载 Amazon S3 存储桶？|适用范围适用客户端：UGREEN NAS桌面客户端...|[→](https://support.ugnas.com/#/detail/eyJjb2RlIjogIjImJjg2MSIsICJjbGllbnRUeXBlIjogIiJ9)|
@@ -69,7 +69,7 @@
 |375|**NAS Connecting to Vision Pro**|控制面板 > 常见问题解答 > NAS 连接到 Vision Pro|Vision Pro是一款高性能智能设备，支持多种...|[→](https://support.ugnas.com/#/detail/eyJjb2RlIjogIjImJjM3NSIsICJjbGllbnRUeXBlIjogIiJ9)|
 |647|**NFC Recognition Feature User Guide**|控制面板 > 常见问题解答 > NFC识别功能使用指南|什么是NFC？NFC（近场通信）是一种短距离无线...|[→](https://support.ugnas.com/#/detail/eyJjb2RlIjogIjImJjY0NyIsICJjbGllbnRUeXBlIjogIiJ9)|
 |524|**Priority of Conflicts Between Individual Permissions and User Group Permissions**|控制面板 > 常见问题解答 > 个人权限与用户组权限冲突的优先级|在 UGOS Pro 系统中，当各个用户之间发生冲突时...|[→](https://support.ugnas.com/#/detail/eyJjb2RlIjogIjImJjUyNCIsICJjbGllbnRUeXBlIjogIiJ9)|
-|294|**Reset Network &amp; Password**|控制面板 > 常见问题解答 > 重置网络和密码|要重置网络设置和密码，请按照下列步骤操作：1.同时...|[→](https://support.ugnas.com/#/detail/eyJjb2RlIjogIjImJjI5NCIsICJjbGllbnRUeXBlIjogIiJ9)|
+|294|**Reset Network & Password**|控制面板 > 常见问题解答 > 重置网络和密码|要重置网络设置和密码，请按照下列步骤操作：1.同时...|[→](https://support.ugnas.com/#/detail/eyJjb2RlIjogIjImJjI5NCIsICJjbGllbnRUeXBlIjogIiJ9)|
 |228|**Risks of Enabling SMB1 Protocol**|控制面板 > 常见问题解答 > 启用 SMB1 协议的风险|启用 SMB1 会带来多种安全风险。以下是一些与...相关的风险|[→](https://support.ugnas.com/#/detail/eyJjb2RlIjogIjImJjIyOCIsICJjbGllbnRUeXBlIjogIiJ9)|
 |756|**Rsync Connection Failure with "Incorrect Username or Password" Error – Troubleshooting**|控制面板 > 常见问题解答 > Rsync 连接失败并出现“用户名或密码不正确”错误 – 故障排除|问题描述配置Rsync远程同步时...|[→](https://support.ugnas.com/#/detail/eyJjb2RlIjogIjImJjc1NiIsICJjbGllbnRUeXBlIjogIiJ9)|
 |774|**SSH Encryption Algorithm Configuration Guide**|控制面板 > 常见问题解答 > SSH加密算法配置指南|UGREEN NAS 上的 SSH 服务提供两个安全级别：高和低。这些...|[→](https://support.ugnas.com/#/detail/eyJjb2RlIjogIjImJjc3NCIsICJjbGllbnRUeXBlIjogIiJ9)|
@@ -116,9 +116,9 @@
 |81|**Rsync**|控制面板 > 文件服务 > 同步|rsync 是一种高效的数据传输协议，广泛用于本地和远程...|[→](https://support.ugnas.com/#/detail/eyJjb2RlIjogIjImJjgxIiwgImNsaWVudFR5cGUiOiAiIn0=)|
 |78|**SMB**|控制面板 > 文件服务 > 中小企业|SMB协议是UGREEN NAS文件共享的核心功能，允许...|[→](https://support.ugnas.com/#/detail/eyJjb2RlIjogIjImJjc4IiwgImNsaWVudFR5cGUiOiAiIn0=)|
 |82|**WebDAV**|控制面板 > 文件服务 > 网络DAV|WebDAV 协议是 UGREEN NAS 的功能之一，可实现高效...|[→](https://support.ugnas.com/#/detail/eyJjb2RlIjogIjImJjgyIiwgImNsaWVudFR5cGUiOiAiIn0=)|
-|94|**Hardware &amp; Power**|控制面板 > 硬件与电源|适用版本：UGOS Pro 1.10.0.0092及以上截图及界面...|[→](https://support.ugnas.com/#/detail/eyJjb2RlIjogIjImJjk0IiwgImNsaWVudFR5cGUiOiAiIn0=)|
+|94|**Hardware & Power**|控制面板 > 硬件与电源|适用版本：UGOS Pro 1.10.0.0092及以上截图及界面...|[→](https://support.ugnas.com/#/detail/eyJjb2RlIjogIjImJjk0IiwgImNsaWVudFR5cGUiOiAiIn0=)|
 |852|**How to Create User Accounts and Assign Permissions**|控制面板 > 如何创建用户帐户并分配权限|适用性支持的平台：UGREEN NAS PC 客户端、Web 浏览器支持...|[→](https://support.ugnas.com/#/detail/eyJjb2RlIjogIjImJjg1MiIsICJjbGllbnRUeXBlIjogIiJ9)|
-|110|**How to Use the Update &amp; Restore Feature**|控制面板 > 如何使用更新和恢复功能|在日常系统维护或设备迁移过程中，您可以使用“更新...|[→](https://support.ugnas.com/#/detail/eyJjb2RlIjogIjImJjExMCIsICJjbGllbnRUeXBlIjogIiJ9)|
+|110|**How to Use the Update & Restore Feature**|控制面板 > 如何使用更新和恢复功能|在日常系统维护或设备迁移过程中，您可以使用“更新...|[→](https://support.ugnas.com/#/detail/eyJjb2RlIjogIjImJjExMCIsICJjbGllbnRUeXBlIjogIiJ9)|
 |108|**Indexing Service**|控制面板 > 索引服务|当新内容添加到“通用搜索”应用程序的搜索范围时...|[→](https://support.ugnas.com/#/detail/eyJjb2RlIjogIjImJjEwOCIsICJjbGllbnRUeXBlIjogIiJ9)|
 |85|**LAN Connection**|控制面板 > 局域网连接|您可以将自定义域指向您的本地 NAS，无需...|[→](https://support.ugnas.com/#/detail/eyJjb2RlIjogIjImJjg1IiwgImNsaWVudFR5cGUiOiAiIn0=)|
 |75|**Manage User Groups**|控制面板 > 管理用户组|“用户组”是用于管理文件和文件夹权限的工具。它...|[→](https://support.ugnas.com/#/detail/eyJjb2RlIjogIjImJjc1IiwgImNsaWVudFR5cGUiOiAiIn0=)|
@@ -232,7 +232,7 @@
 |452|**How to Batch Rename Files and Folders in Files?**|文件 > 常见问题解答 > 如何批量重命名文件中的文件和文件夹？|在UGREEN NAS UGOS Pro系统的文件应用程序中，您可以批量重命名文件...|[→](https://support.ugnas.com/#/detail/eyJjb2RlIjogIjImJjQ1MiIsICJjbGllbnRUeXBlIjogIiJ9)|
 |604|**How to Enable and Manage Personal Folders for Enhanced Data Privacy Protection**|文件 > 常见问题解答 > 如何启用和管理个人文件夹以增强数据隐私保护|个人文件夹是用户存储文件的私人空间。只有...|[→](https://support.ugnas.com/#/detail/eyJjb2RlIjogIjImJjYwNCIsICJjbGllbnRUeXBlIjogIiJ9)|
 |730|**How to Quickly Grant Shared Folder Management Permissions to a NAS Account**|文件 > 常见问题解答 > 如何快速授予NAS帐户共享文件夹管理权限|适用版本：UGOS Pro 1.15.0.0114及以上截图及界面...|[→](https://support.ugnas.com/#/detail/eyJjb2RlIjogIjImJjczMCIsICJjbGllbnRUeXBlIjogIiJ9)|
-|518|**How to Set "Read &amp; Write", "Read only", and "Deny access" Permissions for Shared Folders in Files When Multiple Users Use NAS**|文件 > 常见问题解答 > 当多个用户使用 NAS 时，如何设置文件中共享文件夹的“读写”、“只读”和“拒绝访问”权限|适用版本：UGOS Pro 1.15.0.0114及以上截图及界面...|[→](https://support.ugnas.com/#/detail/eyJjb2RlIjogIjImJjUxOCIsICJjbGllbnRUeXBlIjogIiJ9)|
+|518|**How to Set "Read & Write", "Read only", and "Deny access" Permissions for Shared Folders in Files When Multiple Users Use NAS**|文件 > 常见问题解答 > 当多个用户使用 NAS 时，如何设置文件中共享文件夹的“读写”、“只读”和“拒绝访问”权限|适用版本：UGOS Pro 1.15.0.0114及以上截图及界面...|[→](https://support.ugnas.com/#/detail/eyJjb2RlIjogIjImJjUxOCIsICJjbGllbnRUeXBlIjogIiJ9)|
 |425|**How to Share and Collect Files by "Files"?**|文件 > 常见问题解答 > 如何通过“文件”共享和收藏文件？|在UGOS Pro“文件”中，可以设置文件共享和文件收藏...|[→](https://support.ugnas.com/#/detail/eyJjb2RlIjogIjImJjQyNSIsICJjbGllbnRUeXBlIjogIiJ9)|
 |668|**How to View the Storage Usage of General Users (Sub-Accounts)**|文件 > 常见问题解答 > 如何查看普通用户（子账号）的存储使用情况|如果您想查看普通用户（子账户）的存储使用情况...|[→](https://support.ugnas.com/#/detail/eyJjb2RlIjogIjImJjY2OCIsICJjbGllbnRUeXBlIjogIiJ9)|
 |764|**Implementation and Security Mechanism of Windows ACL in UGREEN NAS**|文件 > 常见问题解答 > UGREEN NAS Windows ACL的实现及安全机制|访问控制列表（ACL）是一种细粒度的权限管理机制...|[→](https://support.ugnas.com/#/detail/eyJjb2RlIjogIjImJjc2NCIsICJjbGllbnRUeXBlIjogIiJ9)|
@@ -242,7 +242,7 @@
 |519|**What Permissions Are Required for a User to Rename Files or Folders?**|文件 > 常见问题解答 > 用户重命名文件或文件夹需要什么权限？|要重命名“文件”中的共享文件夹或文件夹内的子文件，您必须...|[→](https://support.ugnas.com/#/detail/eyJjb2RlIjogIjImJjUxOSIsICJjbGllbnRUeXBlIjogIiJ9)|
 |512|**What to Do if a Windows Computer Cannot Access SMB via IP Address?**|文件 > 常见问题解答 > Windows计算机无法通过IP地址访问SMB怎么办？|问题描述在Windows系统上，无法通过IP访问SMB共享...|[→](https://support.ugnas.com/#/detail/eyJjb2RlIjogIjImJjUxMiIsICJjbGllbnRUeXBlIjogIiJ9)|
 |526|**When a user tries to access a shared folder and sees the message "Insufficient permissions to perform this operation," how should it be handled?**|文件 > 常见问题解答 > 当用户尝试访问共享文件夹并看到“没有足够的权限来执行此操作”消息时，应该如何处理？|问题描述在UGOS Pro系统中，普通用户可能会遇到以下错误...|[→](https://support.ugnas.com/#/detail/eyJjb2RlIjogIjImJjUyNiIsICJjbGllbnRUeXBlIjogIiJ9)|
-|327|**Why Does the Permission Preview Show "Deny access" After Granting "Read &amp; Write" Permission to a Shared Folder**|文件 > 常见问题解答 > 为什么授予共享文件夹“读写”权限后，权限预览显示“拒绝访问”|适用版本：UGOS Pro 1.15.0.0114及以上截图及界面...|[→](https://support.ugnas.com/#/detail/eyJjb2RlIjogIjImJjMyNyIsICJjbGllbnRUeXBlIjogIiJ9)|
+|327|**Why Does the Permission Preview Show "Deny access" After Granting "Read & Write" Permission to a Shared Folder**|文件 > 常见问题解答 > 为什么授予共享文件夹“读写”权限后，权限预览显示“拒绝访问”|适用版本：UGOS Pro 1.15.0.0114及以上截图及界面...|[→](https://support.ugnas.com/#/detail/eyJjb2RlIjogIjImJjMyNyIsICJjbGllbnRUeXBlIjogIiJ9)|
 |483| **[FAQ] How to Restrict Access to a Specific Subfolder in a Shared Folder?**|文件 > 常见问题解答 > [常见问题] 如何限制对共享文件夹中特定子文件夹的访问？|问题描述如果管理员想要授予特定的常规用户...|[→](https://support.ugnas.com/#/detail/eyJjb2RlIjogIjImJjQ4MyIsICJjbGllbnRUeXBlIjogIiJ9)|
 |506| **[FAQ] What to Do If I Failed Access NAS Shared Folders via Windows File Explorer (SMB)?**|文件 > 常见问题解答 > [常见问题] 通过 Windows 文件资源管理器 (SMB) 访问 NAS 共享文件夹失败怎么办？|使用 SMB 连接并访问 UGREEN NAS 文件时出现问题...|[→](https://support.ugnas.com/#/detail/eyJjb2RlIjogIjImJjUwNiIsICJjbGllbnRUeXBlIjogIiJ9)|
 |494| **[Tutorial] How to Create and Configure Shared Folder Permissions?**|文件 > 常见问题解答 > [教程]如何创建和配置共享文件夹权限？|本教程提供了有关如何在 UGOS 上创建共享文件夹的详细指南...|[→](https://support.ugnas.com/#/detail/eyJjb2RlIjogIjImJjQ5NCIsICJjbGllbnRUeXBlIjogIiJ9)|

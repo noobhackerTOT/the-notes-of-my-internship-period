@@ -24,13 +24,13 @@ RTSP和ONVIF是这个生态里的不同角色：
 了解它们的分工后，你会发现，在绿联NAS上添加摄像头时，**填写正确的RTSP地址**是关键一步。以常见的海康威视摄像头为例，其RTSP地址通常遵循以下标准格式：  
 ​`rtsp://username:password@ip:port/Streaming/Channels/id`
 
-- ​`username:password`：你摄像头设置的登录用户名和密码。
-- ​`ip`​：摄像头在局域网中的IP地址，如 `192.168.1.100`。
-- ​`port`​：RTSP服务的端口号，默认为 `554`。
-- ​`/Streaming/Channels/id`​：这是路径，`id`​中的第一位数字代表**通道**，第二位代表**码流类型**。
+- `username:password`：你摄像头设置的登录用户名和密码。
+- `ip`​：摄像头在局域网中的IP地址，如 `192.168.1.100`。
+- `port`​：RTSP服务的端口号，默认为 `554`。
+- `/Streaming/Channels/id`​：这是路径，`id`​中的第一位数字代表**通道**，第二位代表**码流类型**。
 
-  - ​`1`​ 代表主码流（用于存储的高清视频），`2` 代表子码流（预览用的低清视频）。
-  - ​`01`​ 代表通道1的主码流，`102` 则代表通道1的子码流。
+  - `1`​ 代表主码流（用于存储的高清视频），`2` 代表子码流（预览用的低清视频）。
+  - `01`​ 代表通道1的主码流，`102` 则代表通道1的子码流。
 
 因此，一个完整的RTSP地址示例是：  
 ​`rtsp://admin:password123@192.168.1.100:554/Streaming/Channels/101`
@@ -54,10 +54,10 @@ ONVIF标准已成为主流，几乎覆盖所有知名品牌。绝大多数IP摄�
 
 |品牌|典型RTSP地址格式|备注|
 | :-----| :-----------------| :------------------------------|
-|**海康威视 (Hikvision)**|​`rtsp://[username]:[password]@[ip]:554/Streaming/Channels/101`|​`101`​：通道1主码流，`102`：子码流|
-|**大华 (Dahua)**|​`rtsp://[username]:[password]@[ip]:554/cam/realmonitor?channel=1&subtype=0`|​`subtype=0`​：主码流，`1`：子码流|
-|**TP-LINK (Tapo/VIGI)**|​`rtsp://[username]:[password]@[ip]:554/stream1`|部分型号格式为 `rtsp://[ip]:554/stream1`|
-|**Vivotek**|​`rtsp://[username]:[password]@[ip]:554/live.sdp`|通用格式|
+|**海康威视 (Hikvision)**|`rtsp://[username]:[password]@[ip]:554/Streaming/Channels/101`|`101`​：通道1主码流，`102`：子码流|
+|**大华 (Dahua)**|`rtsp://[username]:[password]@[ip]:554/cam/realmonitor?channel=1&subtype=0`|`subtype=0`​：主码流，`1`：子码流|
+|**TP-LINK (Tapo/VIGI)**|`rtsp://[username]:[password]@[ip]:554/stream1`|部分型号格式为 `rtsp://[ip]:554/stream1`|
+|**Vivotek**|`rtsp://[username]:[password]@[ip]:554/live.sdp`|通用格式|
 
 ## 🛡️ 安全性考量：协议不再是短板
 

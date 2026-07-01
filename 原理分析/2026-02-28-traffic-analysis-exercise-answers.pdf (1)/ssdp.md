@@ -271,7 +271,7 @@ M-SEARCH
 |端口|UDP 1900|
 |地址|239.255.255.250|
 |作用|自动发现设备|
-|Wireshark过滤|​`ssdp`|
+|Wireshark过滤|`ssdp`|
 |常见报文|M-SEARCH、NOTIFY|
 |安全风险|UPnP暴露、DDoS放大、资产发现|
 

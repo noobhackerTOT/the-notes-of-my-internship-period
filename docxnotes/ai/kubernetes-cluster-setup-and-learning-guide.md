@@ -333,7 +333,7 @@ kubectl delete deployment <name>
 - 有自己的文件系统、进程空间、网络接口，但通常共享宿主机内核。
 - Docker 是最常用的容器运行时（K8s 也可以用 containerd、CRI-O）。
 
-​**特点**：
+**特点**：
 
 |特性|描述|
 | ------------| ------------------------------------------------------|
@@ -365,8 +365,8 @@ Pod
  └─ Container 3 (logging)
 ```
 
-- ​**1:1 情况**（最常见）：一个 Pod 只运行一个容器，比如 nginx Pod。
-- ​**1:n 情况**（高级用法）：Pod 内运行多个紧密耦合的容器，例如：
+- **1:1 情况**（最常见）：一个 Pod 只运行一个容器，比如 nginx Pod。
+- **1:n 情况**（高级用法）：Pod 内运行多个紧密耦合的容器，例如：
 
   - 主应用容器 + sidecar 日志收集器
   - 主应用容器 + 数据同步容器
@@ -1010,9 +1010,9 @@ helm install ingress-nginx ingress-nginx/ingress-nginx \
 
    |参数|说明|
    | ----| -------------------------------------------------------|
-   |​`nginx`|Pod 的名字|
-   |​`--image=nginx`|使用的镜像，这里是官方 nginx|
-   |​`--restart=Never`|直接创建 Pod，而不是 Deployment（只适合学习和临时测试）|
+   |`nginx`|Pod 的名字|
+   |`--image=nginx`|使用的镜像，这里是官方 nginx|
+   |`--restart=Never`|直接创建 Pod，而不是 Deployment（只适合学习和临时测试）|
 
    ‍
 3. 编写第一个 Deployment YAML 并部署
@@ -1047,11 +1047,11 @@ helm install ingress-nginx ingress-nginx/ingress-nginx \
 
    ✅ 解释：
 
-   - ​`replicas: 3` → K8s 会保持 3 个 Pod 同时运行
-   - ​`selector.matchLabels` → Deployment 会管理带这个标签的 Pod
-   - ​`template` → Pod 的模板
-   - ​`containers` → Pod 内的容器列表
-   - ​`containerPort: 80` → 容器对外端口
+   - `replicas: 3` → K8s 会保持 3 个 Pod 同时运行
+   - `selector.matchLabels` → Deployment 会管理带这个标签的 Pod
+   - `template` → Pod 的模板
+   - `containers` → Pod 内的容器列表
+   - `containerPort: 80` → 容器对外端口
 
    部署 Deployment
 
@@ -1269,8 +1269,8 @@ helm install ingress-nginx ingress-nginx/ingress-nginx \
 
    Service 起到两个作用：
 
-   1. ​**抽象 Pod 集合**（通过 label selector 选择 Pod）
-   2. ​**负载均衡请求**（把访问请求分发到选中的 Pod 上）
+   1. **抽象 Pod 集合**（通过 label selector 选择 Pod）
+   2. **负载均衡请求**（把访问请求分发到选中的 Pod 上）
 
    所以严格来说，负载均衡不是 Pod 自带的，而是 **Service + kube-proxy** 完成的。
 
@@ -1452,8 +1452,8 @@ Endpoints: 10.42.0.48:80,10.42.0.49:80,10.42.0.50:80
 
 ## NodePort 与 ClusterIP 的区别
 
-- ​**ClusterIP**：只能在集群内部访问（比如从 WSL 内访问 Pod）
-- ​**NodePort**​：可以从集群外访问（通过宿主机 IP + NodePort，例如 `http://<WSL宿主机IP>:30080`）
+- **ClusterIP**：只能在集群内部访问（比如从 WSL 内访问 Pod）
+- **NodePort**​：可以从集群外访问（通过宿主机 IP + NodePort，例如 `http://<WSL宿主机IP>:30080`）
 
 |问题|核心解释|
 | ---------------------------------------| -----------------------------------------------------------------------|

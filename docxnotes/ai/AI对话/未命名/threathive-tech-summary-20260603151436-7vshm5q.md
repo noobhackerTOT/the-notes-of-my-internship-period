@@ -70,10 +70,10 @@
 |技术要点|实现细节|
 | ----------| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |**协议解析**|支持两种模式：Inline（`CMD arg1 arg2\r\n`​）和 Multi-bulk（`*N\r\n$len\r\narg\r\n...`）|
-|**RESP 序列化**|​`+OK\r\n`​(Simple String), `-ERR msg\r\n`​(Error), `:N\r\n`​(Integer), `$len\r\nstr\r\n`​(Bulk), `*N\r\n...`(Array)|
+|**RESP 序列化**|`+OK\r\n`​(Simple String), `-ERR msg\r\n`​(Error), `:N\r\n`​(Integer), `$len\r\nstr\r\n`​(Bulk), `*N\r\n...`(Array)|
 |**命令处理（20+）**|PING→PONG, INFO→伪造6.2.13信息, SET→OK+SSH key检测, CONFIG GET/SET→伪造+告警, KEYS→假键列表, SLAVEOF/REPLICAOF→告警, AUTH→ERR+记录密码, EVAL/EVALSHA→OK(Lua RCE诱饵), DEBUG→ERR|
 |**SSH Key 注入检测**|检查 `SET`​ 命令的 key 参数是否包含 `ssh`​/`cron`，触发 WARNING 级别日志|
-|**CONFIG 滥用检测**|​`CONFIG SET dir /root/.ssh`​ / `CONFIG SET dbfilename authorized_keys` 等模式告警|
+|**CONFIG 滥用检测**|`CONFIG SET dir /root/.ssh`​ / `CONFIG SET dbfilename authorized_keys` 等模式告警|
 |**会话保持**|循环读取命令直到 `QUIT` 或 60s 超时|
 |**无认证模式**|模拟 Redis 默认无密码配置，吸引攻击者|
 
