@@ -24,7 +24,7 @@
 
 ‍
 
-iwconfig wlan0
+iwconfig wlan0 
 
 ‍
 
